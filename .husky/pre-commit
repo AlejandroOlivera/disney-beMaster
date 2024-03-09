@@ -1,3 +1,4 @@
 pnpm run lint
 pnpm run format
+git add .
 pnpm run format:check
