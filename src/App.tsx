@@ -1,7 +1,11 @@
-import { LoginForm } from "./components/LoginForm"
+import { LoginForm } from "./sections/LoginForm"
 
 function App() {
-  return <LoginForm />
+  return (
+    <>
+      <LoginForm />
+    </>
+  )
 }
 
 export default App
