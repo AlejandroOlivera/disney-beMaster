@@ -1,5 +1,9 @@
-import { LoginForm } from "@/sections/LoginForm"
+import { LoginForm } from "@/sections/LoginForm/LoginForm"
 
 export const LoginPage = () => {
-  return <LoginForm />
+  return (
+    <>
+      <LoginForm />
+    </>
+  )
 }
