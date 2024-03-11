@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Disney BeMaster
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Disney BeMaster es una aplicación web que permite a los usuarios explorar películas y series de Disney categorizadas.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Inicio de sesión y registro de usuarios.
+- Visualización de películas y series por categorías.
+- Funcionalidad de recuperación de contraseña.
 
-## Expanding the ESLint configuration
+## Tecnologías utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- Supabase
+- React Router
 
-- Configure the top-level `parserOptions` property like this:
+## Instalación
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Sigue estos pasos para instalar y ejecutar el proyecto en tu entorno local:
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/AlejandroOlivera/disney-beMaster.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Navega al directorio del proyecto:
+
+```bash
+cd disney-beMaster
+```
+
+## Instala las dependencias:
+
+```bash
+pnpm install
+```
+
+## Crea un archivo .env en la raíz del proyecto y añade las variables de entorno necesarias para la configuración de Supabase.
+
+## Inicia el servidor de desarrollo:
+
+```bash
+pnpm run start
+```
