@@ -4,7 +4,6 @@ import { TextField } from "@/components/TextField"
 import { useState } from "react"
 
 import { validationSchema } from "./LoginSchema"
-import { ForgotPasswordLink } from "./ForgotPasswodLink"
 
 type Values = {
   email: string
@@ -14,8 +13,6 @@ export const LoginForm = () => {
   const [isLogin, setLogin] = useState(false)
   const [isError, setIsError] = useState(false)
   const [error, setError] = useState<string | undefined>("")
-
-  // const navigate = useNavigate()
 
   const handleSignIn = async (values: Values) => {
     const { email, password } = values
@@ -77,15 +74,6 @@ export const LoginForm = () => {
           </div>
 
           <div>
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Password
-              </label>
-              <ForgotPasswordLink />
-            </div>
             <div>
               <TextField
                 id="password"
@@ -108,11 +96,11 @@ export const LoginForm = () => {
             >
               {isLogin ? "Login" : "Create a new account"}
             </button>
-            <div className="text-sm " onClick={() => setLogin(!isLogin)}>
-              <a
-                href="#"
-                className="font-semibold text-indigo-600 hover:text-indigo-500"
-              >
+            <div
+              className="text-sm cursor-pointer "
+              onClick={() => setLogin(!isLogin)}
+            >
+              <a className="font-semibold text-indigo-600 hover:text-indigo-500">
                 You have acount?
               </a>
             </div>

@@ -6,6 +6,7 @@ import { SessionContext } from "./utils/sessionContext"
 import { User } from "@supabase/supabase-js"
 import { LoginPage } from "./pages/Login"
 import { RecoveryPasswordPage } from "./pages/RecoveryPasswordPage"
+import { MoviesPage } from "./pages/MoviesPage"
 
 function App() {
   const navigate = useNavigate()
@@ -14,20 +15,16 @@ function App() {
 
   useEffect(() => {
     const { data } = client.auth.onAuthStateChange((event, session) => {
-      console.log(
-        "🚀 ~ const{data}=client.auth.onAuthStateChange ~ event:",
-        event,
-      )
-      if (session || event === "SIGNED_OUT") {
-        if (location.pathname !== "/recovery") {
+      if (!session || event === "SIGNED_OUT") {
+        if (!location.pathname.startsWith("/categories")) {
           setUser(null)
           navigate("/login")
         }
-      } else if (event == "PASSWORD_RECOVERY") {
-        navigate("/recovery")
       } else {
         setUser(session?.user as User)
-        navigate("/")
+        if (!location.pathname.startsWith("/categories")) {
+          navigate("/")
+        }
       }
     })
 
@@ -42,6 +39,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login/*" element={<LoginPage />} />
         <Route path="/recovery/*" element={<RecoveryPasswordPage />} />
+        <Route path="/categories/:categoryId/*" element={<MoviesPage />} />
       </Routes>
     </SessionContext.Provider>
   )
