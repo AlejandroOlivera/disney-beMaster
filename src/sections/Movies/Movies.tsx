@@ -28,7 +28,7 @@ export const MoviesSections = () => {
     fetchMoviesByCategory()
   }, [categoryId])
   return (
-    <div className="flex gap-3  flex-wrap p-8">
+    <div className="flex gap-3  flex-wrap p-8 w-full">
       {movies &&
         movies.map((movie) => (
           <ContentDetails

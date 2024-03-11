@@ -9,7 +9,7 @@ export const NavBar = () => {
   return (
     <nav className="navbar mb-2 shadow-lg bg-neutral text-neutral-content  ">
       <div className="px-2 mx-2 navbar-start">
-        <span className="text-lg font-bold">DaisyUI</span>
+        <span className="text-lg font-bold">Disney +</span>
       </div>
       <div className="hidden px-2 mx-2 navbar-center lg:flex">
         <div className="flex items-stretch">
