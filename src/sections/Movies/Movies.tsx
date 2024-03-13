@@ -1,10 +1,14 @@
-import { ContentDetails } from "@/components/ContentDetails"
+import { ContentCategory } from "@/components/ContentCategory"
 import { Movies } from "@/interfaces/Movies"
 import { client } from "@/supabase/client"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
-export const MoviesSections = () => {
+interface IMoviesSections {
+  openModal: (movie: Movies) => void
+}
+
+export const MoviesSections: React.FC<IMoviesSections> = ({ openModal }) => {
   const { categoryId } = useParams()
   const [movies, setMovies] = useState<readonly Movies[]>([])
 
@@ -21,7 +25,7 @@ export const MoviesSections = () => {
         }
         setMovies(data)
       } catch (error) {
-        console.error("Error fetching movies by category:", error.message)
+        console.error("Error fetching movies by category:", error)
       }
     }
 
@@ -31,11 +35,12 @@ export const MoviesSections = () => {
     <div className="flex gap-3  flex-wrap p-8 w-full">
       {movies &&
         movies.map((movie) => (
-          <ContentDetails
+          <ContentCategory
             key={movie.id}
             id={movie.id}
             title={movie.title}
             description={movie.description}
+            openModal={openModal}
           />
         ))}
     </div>

@@ -1,24 +1,24 @@
-import { ContentCategory } from "@/components/ContentCategory"
-import { Categories } from "@/interfaces/Categores"
+import { Categories } from "@/components/Categories"
+import { ICategories } from "@/interfaces/Categores"
 import { client } from "@/supabase/client"
 import { useEffect, useState } from "react"
 
 export const CategoriesSection = () => {
-  const [categories, setCategories] = useState<readonly Categories[]>([])
+  const [categories, setCategories] = useState<readonly ICategories[]>([])
+
+  const fetchCategories = async () => {
+    try {
+      const { data, error } = await client.from("categories").select("*")
+      if (error) {
+        throw error
+      }
+      setCategories(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const { data, error } = await client.from("categories").select("*")
-        if (error) {
-          throw error
-        }
-        setCategories(data)
-      } catch (error) {
-        console.error("Error fetching categories:", error.message)
-      }
-    }
-
     fetchCategories()
   }, [])
 
@@ -26,7 +26,7 @@ export const CategoriesSection = () => {
     <div className="flex gap-3  flex-wrap p-8">
       {categories &&
         categories.map((category) => (
-          <ContentCategory
+          <Categories
             key={category?.id}
             id={category?.id}
             name={category?.name}
